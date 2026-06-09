@@ -1,0 +1,65 @@
+/* -----------------------------------------------------------------------------
+ * Vue-Launchpad 全局主题变量
+ * Vue-Launchpad global theme variables
+ * -------------------------------------------------------------------------- */
+
+/* -----------------------------------------------------------------------------
+ * 明亮模式变量：作为默认主题，所有 UnoCSS 主题色都从这里读取。
+ * Light-mode variables: the default theme source for UnoCSS semantic colors.
+ * -------------------------------------------------------------------------- */
+:root {
+  color-scheme: light;
+  --launchpad-primary: #0891b2;
+  --launchpad-primary-rgb: 8 145 178;
+  --launchpad-success: #059669;
+  --launchpad-success-rgb: 5 150 105;
+  --launchpad-warning: #f97316;
+  --launchpad-warning-rgb: 249 115 22;
+  --launchpad-error: #e11d48;
+  --launchpad-error-rgb: 225 29 72;
+  --launchpad-bg: #f8fafc;
+  --launchpad-bg-rgb: 248 250 252;
+  --launchpad-ink: #0f172a;
+  --launchpad-ink-rgb: 15 23 42;
+  --launchpad-panel: #ffffff;
+  --launchpad-panel-rgb: 255 255 255;
+  --launchpad-orbit: #06b6d4;
+  --launchpad-orbit-rgb: 6 182 212;
+}
+
+/* -----------------------------------------------------------------------------
+ * 暗黑极客模式变量：由 VueUse useDark 给 html 注入 dark class 后自动生效。
+ * Dark hacker-mode variables: activated when VueUse useDark applies the dark class to html.
+ * -------------------------------------------------------------------------- */
+html.dark {
+  color-scheme: dark;
+  --launchpad-primary: #22d3ee;
+  --launchpad-primary-rgb: 34 211 238;
+  --launchpad-success: #34d399;
+  --launchpad-success-rgb: 52 211 153;
+  --launchpad-warning: #fb923c;
+  --launchpad-warning-rgb: 251 146 60;
+  --launchpad-error: #fb7185;
+  --launchpad-error-rgb: 251 113 133;
+  --launchpad-bg: #020617;
+  --launchpad-bg-rgb: 2 6 23;
+  --launchpad-ink: #f8fafc;
+  --launchpad-ink-rgb: 248 250 252;
+  --launchpad-panel: #0f172a;
+  --launchpad-panel-rgb: 15 23 42;
+  --launchpad-orbit: #38bdf8;
+  --launchpad-orbit-rgb: 56 189 248;
+}
+
+/* 中文：浏览器默认盒模型和页面底色兜底，避免第三方组件切换主题时出现白边闪烁。 */
+/* English: Provide page background fallbacks to avoid white flashes when third-party components switch themes. */
+html,
+body,
+#app {
+  min-height: 100%;
+  background: var(--launchpad-bg);
+}
+
+body {
+  margin: 0;
+}

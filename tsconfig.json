@@ -1,0 +1,47 @@
+{
+  "compilerOptions": {
+    // 中文：使用 ESNext 避免 VitePress/esbuild 对新年份 target 的兼容警告，实际可用标准库仍由 lib 固定到 ES2024。
+    // English: Use ESNext to avoid VitePress/esbuild warnings for year-based targets while lib keeps the ES2024 API boundary.
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "Preserve",
+    "moduleResolution": "bundler",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "vue-router/auto"],
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
+    // 中文：TS 6 现代解析基线，让 TypeScript 按 Bundler/ESM 规则读取 package.json 的 imports。
+    // English: TS 6 modern resolution baseline, making TypeScript read package.json imports through Bundler/ESM rules.
+    // 中文：项目路径入口统一收敛到 package.json#imports，禁止再用 baseUrl/paths 维护第二套别名真理源。
+    // English: Keep path entry points centralized in package.json#imports instead of maintaining a second baseUrl/paths source.
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    // 中文：显式启用 package.json#imports 解析，保证 #app/* 成为 TS、Vite 与 IDE 共享的唯一路径入口。
+    // English: Explicitly enable package.json#imports so #app/* is the single shared path entry for TS, Vite, and IDEs.
+    "resolvePackageJsonImports": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "auto-imports.d.ts",
+    "components.d.ts",
+    "typed-router.d.ts",
+    "src/types/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "build/**/*.ts",
+    "vite.config.ts",
+    "vitest.config.ts",
+    "uno.config.ts",
+    "scripts/**/*.ts"
+  ],
+  "exclude": ["dist", "node_modules"]
+}

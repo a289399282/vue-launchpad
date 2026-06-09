@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "eyebrow": "Vue-Launchpad Architecture Screen",
+    "title": "A modern Vue launchpad for ruthless delivery",
+    "subtitle": "Vite 8, TypeScript 6.0, Vue 3.5, typed file routes, UnoCSS, and Biome assembled into an extensible open-source starter.",
+    "switchTo": "中文"
+  },
+  "stack": {
+    "label": "Core Architecture",
+    "vite": {
+      "title": "Vite 8",
+      "description": "Instant cold starts, precise HMR, and production-grade Rollup builds."
+    },
+    "typescript": {
+      "title": "TS 6.0",
+      "description": "Strict typing, Bundler resolution, and modern inference."
+    },
+    "vue": {
+      "title": "Vue 3.5",
+      "description": "Composition API, reactive primitives, and high-performance templates."
+    },
+    "routes": {
+      "title": "File Routes",
+      "description": "Typed route declarations generated from src/pages."
+    },
+    "unocss": {
+      "title": "UnoCSS",
+      "description": "Atomic CSS generation for sharp dark-mode interfaces."
+    },
+    "biome": {
+      "title": "Biome",
+      "description": "A single quality gate for formatting, linting, and import ordering."
+    }
+  }
+}

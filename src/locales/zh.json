@@ -1,0 +1,35 @@
+{
+  "hero": {
+    "eyebrow": "Vue-Launchpad 架构展示大屏",
+    "title": "面向极速交付的现代 Vue 发射台",
+    "subtitle": "将 Vite 8、TypeScript 6.0、Vue 3.5、强类型文件路由、UnoCSS 与 Biome 组合成一套可扩展的开源脚手架。",
+    "switchTo": "EN"
+  },
+  "stack": {
+    "label": "核心技术栈",
+    "vite": {
+      "title": "Vite 8",
+      "description": "极速冷启动、精确 HMR 与生产级 Rollup 构建链路。"
+    },
+    "typescript": {
+      "title": "TS 6.0",
+      "description": "严格类型、Bundler 解析与现代语法推导。"
+    },
+    "vue": {
+      "title": "Vue 3.5",
+      "description": "组合式 API、响应式系统与高性能模板编译。"
+    },
+    "routes": {
+      "title": "文件路由",
+      "description": "基于 src/pages 自动生成强类型路由声明。"
+    },
+    "unocss": {
+      "title": "UnoCSS",
+      "description": "原子化样式引擎，按需生成暗黑极客界面。"
+    },
+    "biome": {
+      "title": "Biome",
+      "description": "格式化、Lint 与导入整理的一体化质量门禁。"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Vue-Launchpad">
+  <rect width="64" height="64" rx="14" fill="#020617"/>
+  <path d="M32 8 55 48H43L32 29 21 48H9L32 8Z" fill="#22d3ee"/>
+  <path d="M32 20 48 48H39L32 36 25 48H16L32 20Z" fill="#34d399"/>
+  <path d="M32 42 38 54H26L32 42Z" fill="#f97316"/>
+</svg>
