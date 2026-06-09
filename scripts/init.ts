@@ -360,7 +360,7 @@ async function installSelectedDependencies() {
   const answers = await inquirer.prompt<InitAnswers>([
     {
       name: "ui",
-      type: "list",
+      type: "select",
       message: "Select the UI engine for Vue-Launchpad:",
       choices,
       default: "element-plus",
