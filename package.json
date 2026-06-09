@@ -43,7 +43,7 @@
   "bugs": {
     "url": "https://github.com/a289399282/vue-launchpad/issues"
   },
-  "homepage": "https://github.com/a289399282/vue-launchpad#readme",
+  "homepage": "https://a289399282.github.io/vue-launchpad/",
   "engines": {
     "node": ">=20.0.0",
     "pnpm": ">=11.0.0"

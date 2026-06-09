@@ -18,7 +18,7 @@ __     __ _   _ _____        _        _    _   _ _   _  ____ _   _ ____   _    _
 
 **基于 Vite 8 + TS 6.0 的现代全能 Vue3 动态发射台，开箱即用。**
 
-[English](./README.md)
+[在线文档](https://a289399282.github.io/vue-launchpad/) · [English](./README.md)
 
 </div>
 

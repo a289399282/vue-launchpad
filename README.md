@@ -18,7 +18,7 @@ __     __ _   _ _____        _        _    _   _ _   _  ____ _   _ ____   _    _
 
 **A modern all-in-one Vue 3 launchpad powered by Vite 8 + TS 6.0, ready out of the box.**
 
-[简体中文](./README.zh.md)
+[Documentation](https://a289399282.github.io/vue-launchpad/) · [简体中文](./README.zh.md)
 
 </div>
 
