@@ -35,7 +35,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  function useMockPilot() {
+  function useDemoPilot() {
     const token = crypto.randomUUID();
     profile.value = {
       id: "pilot-001",
@@ -58,6 +58,6 @@ export const useUserStore = defineStore("user", () => {
     login,
     logout,
     profile,
-    useMockPilot,
+    useDemoPilot,
   };
 });

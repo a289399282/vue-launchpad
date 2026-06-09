@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Vue-Launchpad
   text: A Modern Vue 3 Dynamic Launchpad
-  tagline: Powered by Vite 8 + TS 6.0, ready out of the box with optional UI, i18n, and Mock injection.
+  tagline: Powered by Vite 8 + TS 6.0, ready out of the box with optional UI and i18n injection.
   actions:
     - theme: brand
       text: Quick Start
@@ -22,7 +22,7 @@ features:
     details: strict, noUncheckedIndexedAccess, and exactOptionalPropertyTypes enabled.
   - icon: 🎛️
     title: Dynamic Capability Injection
-    details: UI engines, i18n, and MSW mocks are injected on demand through pnpm launch.
+    details: UI engines and i18n are injected on demand through pnpm launch.
   - icon: 🧭
     title: Vue Router 5 File Routes
     details: Built-in file routing, typed declarations, and route HMR.
@@ -34,7 +34,7 @@ Vue-Launchpad is not a demo starter. It is a production-oriented Vue 3 foundatio
 
 ## Design Principles
 
-- **Light by default**: optional UI, i18n, and MSW ecosystems are not forced into the base template.
+- **Light by default**: optional UI and i18n ecosystems are not forced into the base template.
 - **Enhanced on demand**: `pnpm launch` writes the capability profile into `.uirc.json`.
 - **Types first**: infrastructure modules are designed around strict TypeScript.
 - **Open-source ready**: README, VitePress docs, Husky, Biome, Vitest, and peer checks form the delivery baseline.

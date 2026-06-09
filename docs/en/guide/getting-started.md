@@ -21,7 +21,6 @@ The initializer lets you choose:
 
 - UI engine: Element Plus, Ant Design Vue, Naive UI, TDesign, Arco Design, Shadcn-Vue, Nuxt UI, or Varlet.
 - i18n: installs `vue-i18n` and `@intlify/unplugin-vue-i18n` only when selected.
-- MSW Mock: installs `msw` and generates shared browser, Node, and Vitest mock handlers.
 
 ## Start Development
 

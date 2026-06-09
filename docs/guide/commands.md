@@ -3,7 +3,7 @@
 | 命令 | 说明 |
 | --- | --- |
 | `pnpm dev` | 启动 Vite 开发服务器。 |
-| `pnpm launch` | 交互式选择 UI、i18n、MSW mock 能力。 |
+| `pnpm launch` | 交互式选择 UI 与 i18n 能力。 |
 | `pnpm gen` | 使用 Plop 生成 page、component、store、api 模板。 |
 | `pnpm typecheck` | 使用 `vue-tsc --noEmit` 执行类型检查。 |
 | `pnpm check` | 执行 Biome 检查和类型检查。 |

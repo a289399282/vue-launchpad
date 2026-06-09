@@ -32,9 +32,6 @@ interface ImportMetaEnv {
    */
   readonly VITE_PROXY_API?: LaunchpadDefaultProxyTarget;
 
-  /** 中文：是否在开发环境启动 MSW 网络层 mock。English: Whether to enable MSW network mocks in dev. */
-  readonly VITE_MOCK?: "true" | "false";
-
   /**
    * 中文：动态微服务代理矩阵。
    * English: Dynamic microservice proxy matrix.

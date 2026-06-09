@@ -13,7 +13,6 @@ import type { LaunchpadProfile, UiKey } from "./types";
 
 const defaultProfile = {
   i18n: false,
-  mock: false,
   ui: "element-plus",
 } satisfies LaunchpadProfile;
 
@@ -54,7 +53,6 @@ export function readLaunchpadProfile(root: string): LaunchpadProfile {
 
     return {
       i18n: parsed.i18n === true,
-      mock: parsed.mock === true,
       ui: isUiKey(parsed.ui) ? parsed.ui : defaultProfile.ui,
     };
   } catch {

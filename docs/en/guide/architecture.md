@@ -1,6 +1,6 @@
 # Architecture
 
-Vue-Launchpad does not force every ecosystem package into the starter. It separates the always-runnable baseline from optional capabilities. The base project stays lean, while the interactive launcher writes UI, i18n, and Mock choices into a profile that the build pipeline consumes.
+Vue-Launchpad does not force every ecosystem package into the starter. It separates the always-runnable baseline from optional capabilities. The base project stays lean, while the interactive launcher writes UI and i18n choices into a profile that the build pipeline consumes.
 
 ## Capability Profile
 
@@ -9,7 +9,6 @@ Vue-Launchpad does not force every ecosystem package into the starter. It separa
 ```json
 {
   "i18n": false,
-  "mock": false,
   "ui": "element-plus"
 }
 ```
@@ -17,7 +16,6 @@ Vue-Launchpad does not force every ecosystem package into the starter. It separa
 The Vite config reads this file to decide:
 
 - Whether to load the i18n plugin.
-- Whether to define `__VUE_LAUNCHPAD_MOCK__`.
 - Which UI component resolver to use.
 - Which dependencies should enter `optimizeDeps.include`.
 
@@ -51,7 +49,7 @@ Build infrastructure is split under `build/*`:
 
 - `env.ts`: environment loading and validation.
 - `proxy.ts`: dynamic proxy generation and custom proxy merging.
-- `profile.ts`: UI/i18n/mock profile loading.
+- `profile.ts`: UI/i18n profile loading.
 - `optimize-deps.ts`: profile-aware dependency pre-bundling.
 - `chunks.ts`: production manual chunk strategy.
 

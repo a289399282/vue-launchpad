@@ -21,7 +21,6 @@ pnpm launch
 
 - UI 引擎：Element Plus、Ant Design Vue、Naive UI、TDesign、Arco Design、Shadcn-Vue、Nuxt UI、Varlet。
 - i18n：按需安装 `vue-i18n` 和 `@intlify/unplugin-vue-i18n`。
-- MSW Mock：按需安装 `msw`，生成浏览器端、Node 端和 Vitest 共享的 mock handlers。
 
 ## 启动开发服务器
 

@@ -19,7 +19,6 @@ Vue-Launchpad uses standard Vite `.env` files for runtime differences and adds `
 | `VITE_USER_NODE_ENV` | Business environment label, such as `development`, `staging`, or `production`. |
 | `VITE_APP_BASE_API` | API base path consumed by the Axios request layer. |
 | `VITE_PROXY_API` | Development proxy target mapped to `/api`. |
-| `VITE_MOCK` | MSW mock switch, usually written by `pnpm launch` into a local env file. |
 
 ## Dynamic Proxy Rules
 

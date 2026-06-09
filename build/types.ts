@@ -12,7 +12,6 @@ export type UiKey =
 
 export interface LaunchpadProfile {
   i18n: boolean;
-  mock: boolean;
   ui: UiKey;
 }
 
