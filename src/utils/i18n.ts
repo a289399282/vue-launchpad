@@ -7,7 +7,7 @@ export interface LocaleMessages {
 }
 
 export interface LaunchpadI18nBridge {
-  locale: Ref<string>;
+  locale: Ref<LaunchpadLocale>;
   setLocale: (locale: LaunchpadLocale) => void;
   t: (key: string) => string;
 }

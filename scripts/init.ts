@@ -205,12 +205,16 @@ import {
 } from "#app/utils/i18n.ts";
 
 interface I18nGlobal {
-  locale: Ref<string> | string;
+  locale: Ref<LaunchpadLocale | string> | string;
   t: (key: string) => string;
 }
 
-function readLocale(locale: I18nGlobal["locale"]) {
-  return typeof locale === "string" ? locale : locale.value;
+function normalizeLocale(locale: string): LaunchpadLocale {
+  return locale === "en" ? "en" : "zh";
+}
+
+function readLocale(locale: I18nGlobal["locale"]): LaunchpadLocale {
+  return normalizeLocale(typeof locale === "string" ? locale : locale.value);
 }
 
 function writeLocale(locale: I18nGlobal["locale"], nextLocale: LaunchpadLocale) {
@@ -235,7 +239,7 @@ export async function installLaunchpadI18n(
 
   app.use(i18n);
   const global = i18n.global as I18nGlobal;
-  const locale = ref(readLocale(global.locale));
+  const locale = ref<LaunchpadLocale>(readLocale(global.locale));
 
   app.provide(launchpadI18nKey, {
     locale,

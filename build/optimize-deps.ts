@@ -2,14 +2,9 @@ import fs from "node:fs";
 import path from "node:path";
 import type { LaunchpadProfile, UiKey } from "./types";
 
-const baseOptimizeDeps = [
-  "vue",
-  "vue-router",
-  "pinia",
-  "axios",
-  "vue-i18n",
-  "@vueuse/core",
-] as const;
+const baseOptimizeDeps = ["vue", "vue-router", "pinia", "axios", "@vueuse/core"] as const;
+
+const i18nOptimizeDeps = ["vue-i18n"] as const;
 
 const uiOptimizeDeps = {
   "element-plus": ["element-plus/es"],
@@ -37,11 +32,15 @@ function isDependencyAvailable(root: string, importId: string) {
 }
 
 export function createOptimizeDeps(root: string, profile: LaunchpadProfile) {
-  // 中文：将 Vue 核心、路由、状态、请求、国际化、VueUse 与当前 UI 框架核心入口锁进 Vite 预构建。
-  // English: Pin Vue, router, state, request, i18n, VueUse, and the selected UI entry into Vite pre-bundling.
+  // 中文：将 Vue 核心、路由、状态、请求、VueUse 与当前 UI 框架核心入口锁进 Vite 预构建。
+  // English: Pin Vue, router, state, request, VueUse, and the selected UI entry into Vite pre-bundling.
+  // 中文：i18n 是可选能力，只在 profile 显式开启时进入预构建，避免默认模板隐式拉取 vue-i18n。
+  // English: i18n is optional and only enters pre-bundling when the profile enables it.
   // 中文：这样浏览器在开发阶段不会因为依赖扫描结果抖动而频繁触发全量 Reload。
   // English: This reduces full reloads caused by dependency scan drift during development.
-  return [...new Set([...baseOptimizeDeps, ...uiOptimizeDeps[profile.ui]])].filter((importId) =>
-    isDependencyAvailable(root, importId),
+  const optionalDeps = profile.i18n ? i18nOptimizeDeps : [];
+
+  return [...new Set([...baseOptimizeDeps, ...optionalDeps, ...uiOptimizeDeps[profile.ui]])].filter(
+    (importId) => isDependencyAvailable(root, importId),
   );
 }
