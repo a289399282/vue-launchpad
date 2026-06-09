@@ -22,7 +22,6 @@ interface UiChoice {
 
 interface InitAnswers {
   i18n: boolean;
-  mock: boolean;
   ui: UiKey;
 }
 
@@ -34,11 +33,9 @@ interface PackageJson {
 
 const root = process.cwd();
 const packagePath = path.join(root, "package.json");
-const developmentLocalEnvPath = path.join(root, ".env.development.local");
 const uiConfigPath = path.join(root, ".uirc.json");
 const i18nDir = path.join(root, "src", "i18n");
 const localesDir = path.join(root, "src", "locales");
-const mocksDir = path.join(root, "src", "mocks");
 
 const choices = [
   { name: "Element Plus", value: "element-plus" },
@@ -95,10 +92,6 @@ const i18nDependencies = {
 
 const i18nDevDependencies = {
   "@intlify/unplugin-vue-i18n": "^11.2.3",
-} satisfies Record<string, string>;
-
-const mockDevDependencies = {
-  msw: "^2.14.6",
 } satisfies Record<string, string>;
 
 const localeMessages = {
@@ -253,111 +246,6 @@ export async function installLaunchpadI18n(
   );
 }
 
-async function writeMockFiles() {
-  await fs.ensureDir(mocksDir);
-  await fs.outputFile(
-    path.join(mocksDir, "handlers.ts"),
-    `import { HttpResponse, http } from "msw";
-
-export const handlers = [
-  http.post("/api/auth/login", () =>
-    HttpResponse.json({
-      code: 200,
-      data: {
-        id: "pilot-001",
-        name: "Vue Architect",
-        role: "developer",
-        token: "mock-token-vue-launchpad",
-      },
-      message: "OK",
-      traceId: "mock-login",
-    }),
-  ),
-  http.get("/api/health", () =>
-    HttpResponse.json({
-      code: 200,
-      data: {
-        service: "vue-launchpad",
-        status: "ok",
-      },
-      message: "OK",
-      traceId: "mock-health",
-    }),
-  ),
-];
-`,
-  );
-  await fs.outputFile(
-    path.join(mocksDir, "browser.ts"),
-    `import { setupWorker } from "msw/browser";
-import { handlers } from "./handlers";
-
-export const worker = setupWorker(...handlers);
-`,
-  );
-  await fs.outputFile(
-    path.join(mocksDir, "node.ts"),
-    `import { setupServer } from "msw/node";
-import { handlers } from "./handlers";
-
-export const server = setupServer(...handlers);
-`,
-  );
-  await fs.outputFile(
-    path.join(mocksDir, "index.ts"),
-    `export async function enableMocking() {
-  if (!import.meta.env.DEV || import.meta.env.VITE_MOCK !== "true") {
-    return;
-  }
-
-  const { worker } = await import("./browser");
-  await worker.start({
-    onUnhandledRequest: "bypass",
-  });
-}
-`,
-  );
-  await fs.outputFile(
-    path.join(mocksDir, "setup-vitest.ts"),
-    `import { afterAll, afterEach, beforeAll } from "vitest";
-import { server } from "./node";
-
-beforeAll(() => {
-  server.listen({
-    onUnhandledRequest: "bypass",
-  });
-});
-
-afterEach(() => {
-  server.resetHandlers();
-});
-
-afterAll(() => {
-  server.close();
-});
-`,
-  );
-}
-
-async function enableLocalMockEnv() {
-  const mockEnvLine = "VITE_MOCK = true";
-
-  if (!fs.existsSync(developmentLocalEnvPath)) {
-    await fs.outputFile(
-      developmentLocalEnvPath,
-      `# 本地 API Mock 开关：由 pnpm launch 选择 MSW 后写入，不建议提交。\n# Local API Mock switch: written by pnpm launch after MSW is selected; do not commit it.\n${mockEnvLine}\n`,
-    );
-    return;
-  }
-
-  const source = await readFile(developmentLocalEnvPath, "utf8");
-  const nextSource = source.match(/^VITE_MOCK\s*=/m)
-    ? source.replace(/^VITE_MOCK\s*=.*$/m, mockEnvLine)
-    : `${source.trimEnd()}\n${mockEnvLine}\n`;
-
-  await writeFile(developmentLocalEnvPath, nextSource);
-}
-
 async function installSelectedDependencies() {
   printBanner();
 
@@ -375,12 +263,6 @@ async function installSelectedDependencies() {
       message: "是否需要开启国际化(i18n)多语言支持？(Is i18n support required?)",
       default: false,
     },
-    {
-      name: "mock",
-      type: "confirm",
-      message: "是否需要注入 MSW API Mock 能力？(Inject MSW API mock support?)",
-      default: false,
-    },
   ]);
 
   const packageJson = JSON.parse(await readFile(packagePath, "utf8")) as PackageJson;
@@ -392,28 +274,17 @@ async function installSelectedDependencies() {
   packageJson.devDependencies = {
     ...(packageJson.devDependencies ?? {}),
     ...(answers.i18n ? i18nDevDependencies : {}),
-    ...(answers.mock ? mockDevDependencies : {}),
   };
 
   if (answers.i18n) {
     await writeLocaleMessages();
   }
 
-  if (answers.mock) {
-    await writeMockFiles();
-    await enableLocalMockEnv();
-  }
-
   await writeFile(packagePath, `${JSON.stringify(packageJson, null, 2)}\n`);
-  await fs.writeJson(
-    uiConfigPath,
-    { i18n: answers.i18n, mock: answers.mock, ui: answers.ui },
-    { spaces: 2 },
-  );
+  await fs.writeJson(uiConfigPath, { i18n: answers.i18n, ui: answers.ui }, { spaces: 2 });
 
   console.log(pc.cyan(`\nUI profile written: ${answers.ui}`));
   console.log(pc.cyan(`i18n support: ${answers.i18n ? "enabled" : "disabled"}`));
-  console.log(pc.cyan(`MSW mock support: ${answers.mock ? "enabled" : "disabled"}`));
   console.log(pc.dim("Installing selected dependencies with pnpm install...\n"));
 
   const child = spawn("pnpm", ["install"], {

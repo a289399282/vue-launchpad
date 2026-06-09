@@ -9,12 +9,10 @@ import { createRouter, createWebHistory } from "vue-router";
 import { handleHotUpdate, routes } from "vue-router/auto-routes";
 import App from "./App.vue";
 import { installLaunchpadI18n } from "./i18n/adapter";
-import { enableMocking } from "./mocks";
 import { setupRouterGuard } from "./router/guard";
 import type { LocaleMessages } from "./utils/i18n";
 
 declare const __VUE_LAUNCHPAD_I18N__: boolean;
-declare const __VUE_LAUNCHPAD_MOCK__: boolean;
 
 function createLocaleMessages(modules: Record<string, LocaleMessages>) {
   return Object.entries(modules).reduce<Record<string, LocaleMessages>>(
@@ -47,10 +45,6 @@ async function installI18n(app: VueApp) {
   }
 
   await installLaunchpadI18n(app, messages);
-}
-
-if (__VUE_LAUNCHPAD_MOCK__) {
-  await enableMocking();
 }
 
 const app = createApp(App);

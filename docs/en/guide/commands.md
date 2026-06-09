@@ -3,7 +3,7 @@
 | Command | Description |
 | --- | --- |
 | `pnpm dev` | Start the Vite dev server. |
-| `pnpm launch` | Interactively choose UI, i18n, and MSW mock capabilities. |
+| `pnpm launch` | Interactively choose UI and i18n capabilities. |
 | `pnpm gen` | Generate page, component, store, and api templates with Plop. |
 | `pnpm typecheck` | Run `vue-tsc --noEmit`. |
 | `pnpm check` | Run Biome checks and TypeScript checks. |

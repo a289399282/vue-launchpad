@@ -19,7 +19,6 @@ Vue-Launchpad 使用 Vite 标准 `.env` 文件承载运行环境差异，并额�
 | `VITE_USER_NODE_ENV` | 业务侧环境标识，如 `development`、`staging`、`production`。 |
 | `VITE_APP_BASE_API` | Axios 请求层读取的 API 根路径。 |
 | `VITE_PROXY_API` | 开发代理目标，会映射为 `/api`。 |
-| `VITE_MOCK` | MSW mock 开关，通常由 `pnpm launch` 写入本地文件。 |
 
 ## 动态代理规则
 

@@ -29,7 +29,6 @@ __     __ _   _ _____        _        _    _   _ _   _  ____ _   _ ____   _    _
 - 🧭 **Vue Router 5 文件动态路由**：基于 `src/pages` 自动生成强类型路由，并接入路由 HMR。
 - 🎛️ **8 大 UI 生态按需注入**：Element Plus、Ant Design Vue、Naive UI、TDesign、Arco Design、Shadcn-Vue、Nuxt UI、Varlet 一键选择。
 - ⚡ **Biome 闪电质量门禁**：格式化、Lint、导入整理统一收敛，配合 Husky + lint-staged 形成提交前防线。
-- 🧪 **可选 MSW 网络层 Mock**：通过 `pnpm launch` 注入浏览器端与 Vitest 共享的 API mock handlers。
 - 🏗️ **大厂级构建与网络优化**：动态环境校验、自动代理生成、Axios 请求封装、重复请求取消、手动分包、gzip 压缩、按需 bundle 分析。
 
 ## 🚀 快速开始
@@ -53,7 +52,7 @@ pnpm build
 | 指令 | 说明 |
 | --- | --- |
 | `pnpm dev` | 启动 Vite 开发服务器，支持文件路由、UnoCSS、自动导入和代理配置。 |
-| `pnpm launch` | 进入交互式初始化流程，选择 UI 引擎、i18n 与 MSW mock 能力，并写入 `.uirc.json`。 |
+| `pnpm launch` | 进入交互式初始化流程，选择 UI 引擎与 i18n 能力，并写入 `.uirc.json`。 |
 | `pnpm gen` | 使用 Plop 生成 page、component、store、api 等标准模板。 |
 | `pnpm typecheck` | 使用 `vue-tsc --noEmit` 执行 Vue + TypeScript 类型检查。 |
 | `pnpm check` | 串行执行 Biome 检查与 TypeScript 类型检查。 |
@@ -84,7 +83,7 @@ pnpm build
 
 `pnpm launch` 会将选择结果写入 `.uirc.json`，Vite 配置会根据 profile 自动调整组件解析器、依赖预构建和组件扫描目录。
 
-同一流程也可以按需注入 i18n 与 MSW mock。选择 MSW 后会生成 `src/mocks/*`，并在 `.env.development.local` 写入 `VITE_MOCK = true`，让本地开发与 Vitest 测试共享同一套 API handlers。
+同一流程也可以按需注入 i18n，但不会污染纯净基础模板。
 
 | UI 引擎 | 定位 |
 | --- | --- |

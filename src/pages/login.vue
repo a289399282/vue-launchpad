@@ -14,7 +14,7 @@ const redirectPath = computed(() => {
 
 // biome-ignore lint/correctness/noUnusedVariables: 中文：Vue 模板会引用该函数。English: Referenced by the Vue template.
 async function enterLaunchpad() {
-  userStore.useMockPilot();
+  userStore.useDemoPilot();
   await router.replace(redirectPath.value);
 }
 </script>
@@ -29,7 +29,7 @@ async function enterLaunchpad() {
       <p class="text-xs font-bold uppercase text-cyan-700 dark:text-cyan-200">Vue-Launchpad</p>
       <h1 class="mt-4 text-3xl font-black">Launch Access</h1>
       <p class="mt-4 leading-7 text-slate-600 dark:text-slate-300">
-        Enterprise route guard is active. Use the mock pilot to enter the protected architecture
+        Enterprise route guard is active. Use the demo pilot to enter the protected architecture
         screen.
       </p>
       <button

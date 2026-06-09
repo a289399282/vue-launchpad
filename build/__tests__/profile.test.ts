@@ -29,19 +29,15 @@ describe("readLaunchpadProfile", () => {
 
     expect(readLaunchpadProfile(root)).toEqual({
       i18n: false,
-      mock: false,
       ui: "element-plus",
     });
   });
 
   it("读取合法 UI profile", async () => {
-    const root = await createTemporaryRoot(
-      JSON.stringify({ i18n: true, mock: true, ui: "naive-ui" }),
-    );
+    const root = await createTemporaryRoot(JSON.stringify({ i18n: true, ui: "naive-ui" }));
 
     expect(readLaunchpadProfile(root)).toEqual({
       i18n: true,
-      mock: true,
       ui: "naive-ui",
     });
   });
@@ -51,7 +47,6 @@ describe("readLaunchpadProfile", () => {
 
     expect(readLaunchpadProfile(root)).toEqual({
       i18n: true,
-      mock: false,
       ui: "element-plus",
     });
   });
@@ -62,12 +57,10 @@ describe("readLaunchpadProfile", () => {
 
     expect(readLaunchpadProfile(invalidJsonRoot)).toEqual({
       i18n: false,
-      mock: false,
       ui: "element-plus",
     });
     expect(readLaunchpadProfile(nonObjectRoot)).toEqual({
       i18n: false,
-      mock: false,
       ui: "element-plus",
     });
   });

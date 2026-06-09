@@ -29,7 +29,6 @@ __     __ _   _ _____        _        _    _   _ _   _  ____ _   _ ____   _    _
 - 🧭 **Vue Router 5 file-based routing**: typed routes generated from `src/pages`, with route HMR wired in.
 - 🎛️ **8 UI engines on demand**: Element Plus, Ant Design Vue, Naive UI, TDesign, Arco Design, Shadcn-Vue, Nuxt UI, and Varlet.
 - ⚡ **Biome-powered quality gate**: formatting, linting, and import organization through one fast toolchain.
-- 🧪 **Optional MSW network mocks**: inject browser and Vitest API mock handlers through `pnpm launch`.
 - 🏗️ **Production-minded build and network layer**: strict env validation, dynamic proxy generation, Axios infrastructure, request dedupe, manual chunks, gzip compression, and opt-in bundle analysis.
 
 ## 🚀 Quick Start
@@ -53,7 +52,7 @@ pnpm build
 | Script | Description |
 | --- | --- |
 | `pnpm dev` | Start the Vite dev server with file routes, UnoCSS, auto imports, and proxy support. |
-| `pnpm launch` | Run the interactive initializer for UI, i18n, and MSW mock capabilities, then write the selected profile to `.uirc.json`. |
+| `pnpm launch` | Run the interactive initializer for UI and i18n capabilities, then write the selected profile to `.uirc.json`. |
 | `pnpm gen` | Generate page, component, store, and api templates with Plop. |
 | `pnpm typecheck` | Run `vue-tsc --noEmit` for Vue + TypeScript validation. |
 | `pnpm check` | Run Biome checks and TypeScript checks in sequence. |
@@ -84,7 +83,7 @@ pnpm build
 
 `pnpm launch` writes the selected profile into `.uirc.json`. The Vite config then adjusts component resolvers, dependency pre-bundling, and component scan directories from that profile.
 
-The same flow can also inject i18n and MSW mock support. When MSW is selected, Vue-Launchpad generates `src/mocks/*` and writes `VITE_MOCK = true` into `.env.development.local`, so local development and Vitest can share the same API handlers.
+The same flow can also inject i18n support without forcing it into the clean baseline.
 
 | UI Engine | Best fit |
 | --- | --- |

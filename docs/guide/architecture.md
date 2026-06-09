@@ -1,6 +1,6 @@
 # 架构设计
 
-Vue-Launchpad 的目标不是把所有生态强塞进模板，而是把“基础可运行”和“按需增强”拆成两层。默认项目保持轻量，交互式初始化再把 UI、i18n、Mock 等能力写入 profile，让构建链按声明进行装配。
+Vue-Launchpad 的目标不是把所有生态强塞进模板，而是把“基础可运行”和“按需增强”拆成两层。默认项目保持轻量，交互式初始化再把 UI、i18n 等能力写入 profile，让构建链按声明进行装配。
 
 ## 能力 profile
 
@@ -9,7 +9,6 @@ Vue-Launchpad 的目标不是把所有生态强塞进模板，而是把“基础
 ```json
 {
   "i18n": false,
-  "mock": false,
   "ui": "element-plus"
 }
 ```
@@ -17,7 +16,6 @@ Vue-Launchpad 的目标不是把所有生态强塞进模板，而是把“基础
 Vite 配置会读取该文件，并据此决定：
 
 - 是否加载 i18n 插件。
-- 是否定义 `__VUE_LAUNCHPAD_MOCK__`。
 - 使用哪个 UI 组件解析器。
 - 哪些依赖进入 Vite `optimizeDeps.include`。
 
@@ -51,7 +49,7 @@ Vite 配置会读取该文件，并据此决定：
 
 - `env.ts`：环境变量加载与校验。
 - `proxy.ts`：动态代理生成与自定义代理合并。
-- `profile.ts`：读取 UI/i18n/mock profile。
+- `profile.ts`：读取 UI/i18n profile。
 - `optimize-deps.ts`：根据 profile 柔性预构建依赖。
 - `chunks.ts`：生产构建手动分包策略。
 

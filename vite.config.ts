@@ -107,7 +107,6 @@ export default defineConfig(async ({ mode }) => {
     ],
     define: {
       __VUE_LAUNCHPAD_I18N__: JSON.stringify(profile.i18n),
-      __VUE_LAUNCHPAD_MOCK__: JSON.stringify(profile.mock),
     },
     optimizeDeps: {
       include: createOptimizeDeps(root, profile),

@@ -4,7 +4,7 @@ layout: home
 hero:
   name: Vue-Launchpad
   text: 现代全能 Vue3 动态发射台
-  tagline: 基于 Vite 8 + TS 6.0，开箱即用，按需注入 UI、i18n 与 Mock 能力。
+  tagline: 基于 Vite 8 + TS 6.0，开箱即用，按需注入 UI 与 i18n 能力。
   actions:
     - theme: brand
       text: 快速开始
@@ -22,7 +22,7 @@ features:
     details: strict、noUncheckedIndexedAccess、exactOptionalPropertyTypes 全开。
   - icon: 🎛️
     title: 动态能力注入
-    details: 8 大 UI 引擎、i18n、MSW Mock 通过 pnpm launch 按需开启。
+    details: 8 大 UI 引擎与 i18n 通过 pnpm launch 按需开启。
   - icon: 🧭
     title: Vue Router 5 文件路由
     details: 内置文件路由插件、强类型声明与路由 HMR。
@@ -34,7 +34,7 @@ Vue-Launchpad 不是一个简单的 demo starter，而是一套面向产品交�
 
 ## 设计原则
 
-- **默认轻量**：基础模板不强制安装 UI、i18n、MSW 等可选生态。
+- **默认轻量**：基础模板不强制安装 UI、i18n 等可选生态。
 - **按需增强**：通过 `pnpm launch` 将能力写入 `.uirc.json`，再由 Vite 配置读取 profile。
 - **类型先行**：所有基础设施模块都服务于 TypeScript 严格模式。
 - **开源友好**：README、VitePress 文档、Husky、Biome、Vitest 与 peer 检查形成完整交付闭环。
