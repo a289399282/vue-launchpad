@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { reactive } from "vue";
+
 interface PageProps {
   title?: string;
 }
